@@ -3,18 +3,18 @@ import 'package:provider/provider.dart';
 import '../providers/bouquet_provider.dart';
 import '../widgets/bouquet_card.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class BouquetSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bouquetProvider = Provider.of<BouquetProvider>(context);
-    final favorites = bouquetProvider.favorites;
+    final bouquets = bouquetProvider.bouquets;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Buquês Favoritos')),
+      appBar: AppBar(title: Text('Selecione o Buquê Desejado')),
       body: ListView.builder(
-        itemCount: favorites.length,
+        itemCount: bouquets.length,
         itemBuilder: (context, index) {
-          return BouquetCard(bouquet: favorites[index]);
+          return BouquetCard(bouquet: bouquets[index]);
         },
       ),
     );
