@@ -2,29 +2,50 @@ import 'package:flutter/material.dart';
 import '../models/bouquet.dart';
 
 class BouquetProvider with ChangeNotifier {
-  final List<Bouquet> _bouquets = [
+  final List<Bouquet> _items = [
     Bouquet(
-      name: 'Buquê com 1 Girassol',
-      description:
-          'Um único girassol vibrante, símbolo de alegria e luz, embalado com papel kraft e fita rústica. Altura aproximada de 40 cm. Perfeito para presentear ou decorar.',
+      id: '1',
+      name: 'Buquê Girassol',
+      description: 'Um girassol vibrante, símbolo de alegria.',
       price: 45.0,
-      imageUrl: 'https://via.placeholder.com/150',
+      imageAsset: 'assets/Girassol.jpg',
     ),
-    // Adicione mais buquês conforme necessário
+    Bouquet(
+      id: '2',
+      name: 'Buquê Rosa',
+      description: 'Clássico buquê de rosas vermelhas.',
+      price: 50.0,
+      imageAsset: 'assets/Rosa.jpg',
+    ),
+    Bouquet(
+      id: '3',
+      name: 'Buquê Lírio',
+      description: 'Um lírio branco elegante, símbolo de pureza.',
+      price: 55.0,
+      imageAsset: 'assets/Lirio.jpg',
+    ),
+    Bouquet(
+      id: '4',
+      name: 'Buquê Tulipa',
+      description: 'Tulipas coloridas, simbolizando carinho.',
+      price: 60.0,
+      imageAsset: 'assets/Tulipa.jpg',
+    ),
   ];
 
-  final List<Bouquet> _favorites = [];
+  List<Bouquet> get items => [..._items];
 
-  List<Bouquet> get bouquets => [..._bouquets];
+  List<Bouquet> get favorites => _items.where((b) => b.isFavorite).toList();
 
-  List<Bouquet> get favorites => [..._favorites];
+  Bouquet findById(String id) {
+    return _items.firstWhere((b) => b.id == id);
+  }
 
-  void toggleFavorite(Bouquet bouquet) {
-    if (_favorites.contains(bouquet)) {
-      _favorites.remove(bouquet);
-    } else {
-      _favorites.add(bouquet);
+  void toggleFavorite(String id) {
+    final index = _items.indexWhere((b) => b.id == id);
+    if (index != -1) {
+      _items[index].isFavorite = !_items[index].isFavorite;
+      notifyListeners();
     }
-    notifyListeners();
   }
 }

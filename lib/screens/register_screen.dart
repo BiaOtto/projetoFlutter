@@ -1,51 +1,43 @@
 import 'package:flutter/material.dart';
+import 'bouquet_selection_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
+  void _register() {
+    if (_passwordController.text == _confirmPasswordController.text) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const BouquetSelectionScreen()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('As senhas não coincidem.')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Criar Conta')),
+      appBar: AppBar(title: const Text('Cadastrar-se')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Text('CRIE SUA CONTA', style: TextStyle(fontSize: 24)),
-            TextField(
-              controller: usernameController,
-              decoration: InputDecoration(labelText: 'Nome de usuário'),
-            ),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: passwordController,
-              decoration: InputDecoration(labelText: 'Senha'),
-              obscureText: true,
-            ),
-            TextField(
-              controller: confirmPasswordController,
-              decoration: InputDecoration(labelText: 'Confirme a senha'),
-              obscureText: true,
-            ),
-            ElevatedButton(
-              child: Text('Cadastrar'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/selection');
-              },
-            ),
-            TextButton(
-              child: Text('Já possui uma conta? Entre aqui'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-            ),
+            TextField(controller: _usernameController, decoration: const InputDecoration(labelText: 'Nome de usuário')),
+            TextField(controller: _emailController, decoration: const InputDecoration(labelText: 'Email')),
+            TextField(controller: _passwordController, obscureText: true, decoration: const InputDecoration(labelText: 'Senha')),
+            TextField(controller: _confirmPasswordController, obscureText: true, decoration: const InputDecoration(labelText: 'Confirme a senha')),
+            const SizedBox(height: 20),
+            ElevatedButton(onPressed: _register, child: const Text('Cadastrar')),
           ],
         ),
       ),

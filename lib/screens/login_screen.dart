@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
+import 'bouquet_selection_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _login() {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const BouquetSelectionScreen()));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Entrar')),
+      appBar: AppBar(title: const Text('Entrar')),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Text('BEM-VINDO DE VOLTA!', style: TextStyle(fontSize: 24)),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: passwordController,
-              decoration: InputDecoration(labelText: 'Senha'),
-              obscureText: true,
-            ),
-            ElevatedButton(
-              child: Text('Entrar'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/selection');
-              },
-            ),
+            TextField(controller: _emailController, decoration: const InputDecoration(labelText: 'Email')),
+            TextField(controller: _passwordController, obscureText: true, decoration: const InputDecoration(labelText: 'Senha')),
+            const SizedBox(height: 20),
+            ElevatedButton(onPressed: _login, child: const Text('Entrar')),
           ],
         ),
       ),
