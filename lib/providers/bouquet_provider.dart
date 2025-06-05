@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 import '../models/bouquet.dart';
 
 class BouquetProvider with ChangeNotifier {
-  final List<Bouquet> _items = [
-    Bouquet(
+  List<Bouquet> _items = [
+    const Bouquet(
       id: '1',
       name: 'Buquê Girassol',
       description: 'Um girassol vibrante, símbolo de alegria.',
       price: 45.0,
       imageAsset: 'assets/Girassol.jpg',
     ),
-    Bouquet(
+    const Bouquet(
       id: '2',
       name: 'Buquê Rosa',
       description: 'Clássico buquê de rosas vermelhas.',
       price: 50.0,
       imageAsset: 'assets/Rosa.jpg',
     ),
-    Bouquet(
+    const Bouquet(
       id: '3',
       name: 'Buquê Lírio',
       description: 'Um lírio branco elegante, símbolo de pureza.',
       price: 55.0,
       imageAsset: 'assets/Lirio.jpg',
     ),
-    Bouquet(
+    const Bouquet(
       id: '4',
       name: 'Buquê Tulipa',
       description: 'Tulipas coloridas, simbolizando carinho.',
@@ -42,10 +42,12 @@ class BouquetProvider with ChangeNotifier {
   }
 
   void toggleFavorite(String id) {
-    final index = _items.indexWhere((b) => b.id == id);
-    if (index != -1) {
-      _items[index].isFavorite = !_items[index].isFavorite;
-      notifyListeners();
-    }
+    _items = _items.map((b) {
+      if (b.id == id) {
+        return b.copyWith(isFavorite: !b.isFavorite);
+      }
+      return b;
+    }).toList();
+    notifyListeners();
   }
 }
