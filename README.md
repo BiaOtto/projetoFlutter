@@ -34,15 +34,19 @@ Nosso grupo escolheu como tema um diário pessoal, chamado **“O Cravo e a Rosa
 ```
 lib/
 ├── main.dart
-├── pages/
-│   ├── login_page.dart
-│   ├── home_page.dart
-│   └── diary_entry_page.dart
-├── components/
-├── services/
-├── themes/
-assets/
-└── images/
+├── models/
+│   └── bouquet.dart
+├── providers/
+│   └── bouquet_provider.dart
+├── screens/
+│   ├── bouquet_detail_screen.dart
+│   ├── bouquet_selection_screen.dart
+│   ├── favorites_screen.dart
+│   ├── login_screen.dart
+│   ├── register_screen.dart
+│   └── welcome_screen.dart
+├── widgets/
+│   └── bouquet_card.dart
 ```
 
 ---
