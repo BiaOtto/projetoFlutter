@@ -8,7 +8,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink.shade50,
+      backgroundColor: const Color(0xFFF8F6F1),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -17,7 +17,7 @@ class WelcomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/flower_logo.png', // Substitua ou remova conforme necessário
+                  'assets/Logo.png', // Substitua ou remova conforme necessário
                   height: 120,
                 ),
                 const SizedBox(height: 24),

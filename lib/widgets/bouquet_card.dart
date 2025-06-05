@@ -5,59 +5,64 @@ import '../providers/bouquet_provider.dart';
 
 class BouquetCard extends StatelessWidget {
   final Bouquet bouquet;
+  final VoidCallback onTap;
 
-  const BouquetCard({super.key, required this.bouquet});
+  const BouquetCard({
+    super.key,
+    required this.bouquet,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final isFavorite = bouquet.isFavorite;
-
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.asset(
-              bouquet.imageAsset,
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          GestureDetector(
+            onTap: onTap,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.asset(
+                bouquet.imageAsset,
+                height: 180,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   bouquet.name,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 4),
                 Text(
                   bouquet.description,
-                  style: TextStyle(color: Colors.grey[600]),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'R\$ ${bouquet.price.toStringAsFixed(2)}',
-                      style: const TextStyle(fontSize: 18, color: Colors.green),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     IconButton(
                       icon: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: isFavorite ? Colors.red : Colors.grey,
+                        bouquet.isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: bouquet.isFavorite ? Colors.red : Colors.grey,
                       ),
                       onPressed: () {
-                        Provider.of<BouquetProvider>(context, listen: false)
-                            .toggleFavorite(bouquet.id);
+                        Provider.of<BouquetProvider>(context, listen: false).toggleFavorite(bouquet.id);
                       },
                     ),
                   ],

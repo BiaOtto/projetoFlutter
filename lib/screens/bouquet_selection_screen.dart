@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../providers/bouquet_provider.dart';
 import '../widgets/bouquet_card.dart';
 import 'bouquet_detail_screen.dart';
@@ -10,7 +11,7 @@ class BouquetSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bouquets = Provider.of<BouquetProvider>(context).items;
+    final bouquets = context.watch<BouquetProvider>().items;
 
     return Scaffold(
       appBar: AppBar(
@@ -18,27 +19,44 @@ class BouquetSelectionScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
+            tooltip: 'Favoritos',
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const FavoritesScreen()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const FavoritesScreen()),
+              );
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: bouquets.length,
-        itemBuilder: (ctx, i) {
-          return BouquetCard(
-            bouquet: bouquets[i],
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => BouquetDetailScreen(bouquetId: bouquets[i].id),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: bouquets.isEmpty
+            ? const Center(
+                child: Text(
+                  'Nenhum buquê disponível no momento.',
+                  style: TextStyle(fontSize: 16),
+                  textAlign: TextAlign.center,
                 ),
-              );
-            },
-          );
-        },
+              )
+            : ListView.separated(
+                itemCount: bouquets.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 12),
+                itemBuilder: (context, index) {
+                  final bouquet = bouquets[index];
+                  return BouquetCard(
+                    bouquet: bouquet,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BouquetDetailScreen(bouquetId: bouquet.id),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
       ),
     );
   }
