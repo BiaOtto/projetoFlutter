@@ -1,73 +1,37 @@
- O Cravo e a Rosa
-Este aplicativo foi desenvolvido como parte da atividade final da unidade curricular Programação de Aplicativos Mobile. O projeto foi realizado em grupo, com o objetivo de aplicar na prática todos os conhecimentos adquiridos ao longo do semestre com Flutter e Dart.
+# 🌹 O Cravo e a Rosa
 
-🎓 Sobre a Atividade
-A proposta era construir um aplicativo funcional em Flutter, seguindo os seguintes requisitos:
+Este aplicativo foi desenvolvido como parte da atividade final da unidade curricular **Programação de Aplicativos Mobile**. O projeto foi realizado em grupo, com o objetivo de aplicar na prática todos os conhecimentos adquiridos ao longo do semestre com Flutter e Dart.
 
+A proposta era construir um aplicativo funcional em Flutter, seguindo os seguintes requisitos: tela de login com autenticação real, múltiplas telas funcionais, persistência de dados local ou na nuvem, integração com API, aplicação de técnicas de segurança, estruturação e organização de código e documentação completa.
 
-Tela de login com autenticação real
+Nosso grupo escolheu como tema um diário pessoal, chamado **“O Cravo e a Rosa”** — uma proposta leve e simbólica para explorar recursos de cadastro, exibição e armazenamento de registros pessoais.
 
+---
 
-Múltiplas telas funcionais
+## Tecnologias Utilizadas
 
+- Flutter & Dart  
+- Firebase (para autenticação)  
+- Flutter Secure Storage (para dados locais com segurança)  
+- Git e GitHub  
+- Android Studio e VS Code  
 
-Persistência de dados local ou na nuvem
+---
 
+## Funcionalidades Implementadas
 
-Integração com API
+- Tela de login com autenticação no Firebase  
+- Cadastro e visualização de entradas no diário  
+- Interface responsiva com múltiplas telas  
+- Tema personalizado com cores suaves  
+- Persistência de dados  
+- Organização modular do código  
 
+---
 
-Aplicação de técnicas de segurança
+## Estrutura do Projeto
 
-
-Estruturação e organização de código
-
-
-Documentação completa
-
-
-Nosso grupo escolheu como tema um diário pessoal, que chamamos de “O Cravo e a Rosa” — uma proposta leve e simbólica para explorar recursos de cadastro, exibição e armazenamento de registros pessoais.
-
-🛠️ Tecnologias Utilizadas
-
-Flutter & Dart
-
-
-Firebase (para autenticação)
-
-
-Flutter Secure Storage (para dados locais com segurança)
-
-
-Git e GitHub
-
-
-Android Studio e VS Code
-
-
-📱 Funcionalidades Implementadas
-
-✅ Tela de login com autenticação no Firebase
-
-
-✅ Cadastro e visualização de entradas no diário
-
-
-✅ Interface responsiva com múltiplas telas
-
-
-✅ Tema personalizado com cores suaves
-
-
-✅ Persistência de dados
-
-
-✅ Organização modular do código
-
-
-📁 Estrutura do Projeto
-css
-CopiarEditar
+```
 lib/
 ├── main.dart
 ├── pages/
@@ -79,69 +43,61 @@ lib/
 ├── themes/
 assets/
 └── images/
+```
 
-🚀 Como Rodar o Projeto
+---
 
-Clone o repositório:
-bash
-CopiarEditar
+## Como Rodar o Projeto
+
+1. Clone o repositório:  
+```bash
 git clone https://github.com/BiaOtto/projetoFlutter.git
+```
 
-
-Acesse a pasta do projeto:
-bash
-CopiarEditar
+2. Acesse a pasta do projeto:  
+```bash
 cd projetoFlutter
+```
 
-
-Instale as dependências:
-bash
-CopiarEditar
+3. Instale as dependências:  
+```bash
 flutter pub get
+```
 
-
-Execute o projeto:
-bash
-CopiarEditar
+4. Execute o projeto:  
+```bash
 flutter run
+```
 
+> Certifique-se de que seu ambiente Flutter está corretamente configurado com `flutter doctor`.
 
+---
 
-Obs.: Certifique-se de que seu ambiente Flutter está corretamente configurado com flutter doctor.
+## Aprendizados
 
+Durante o desenvolvimento, aprendemos a:  
+- Criar e organizar um app Flutter do zero  
+- Trabalhar com autenticação e segurança  
+- Usar boas práticas de estrutura e componentização  
+- Colaborar em equipe com Git  
+- Aplicar conceitos reais de persistência de dados e design de interface  
 
-📚 Aprendizados
-Durante o desenvolvimento, aprendemos a:
+---
 
+## Contribuições
 
-Criar e organizar um app Flutter do zero
-
-
-Trabalhar com autenticação e segurança
-
-
-Usar boas práticas de estrutura e componentização
-
-
-Colaborar em equipe com Git
-
-
-Aplicar conceitos reais de persistência de dados e design de interface
-
-
-🤝 Contribuições
 Este projeto foi feito com foco em aprendizado e colaboração. Estamos abertas a sugestões de melhorias!
 
-📝 Licença
+---
+
+## Licença
+
 Este projeto está sob a Licença MIT.
 
+---
 
-👩‍💻 Equipe de Desenvolvimento
+## Equipe de Desenvolvimento
 
-Larissa de Lima Calcanho
-
-
-Bruna Zimmermann
-
-
-Emily Mader Peres
+- Larissa de Lima Calcanho  
+- Bruna Zimmermann  
+- Emily Mader Peres
