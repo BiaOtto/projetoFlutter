@@ -28,7 +28,7 @@ Aplicar na prática os conhecimentos adquiridos ao longo do semestre sobre desen
 - **Firebase Authentication**
 - **Flutter Secure Storage**
 - **Provider (Gerenciamento de estado)**
-- **Visual Studio Code**
+- **Android Studio / Visual Studio Code**
 - **Git & GitHub**
 
 ---
